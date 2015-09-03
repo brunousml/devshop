@@ -1,11 +1,11 @@
 package main
 
-import(
+import (
 	"log"
 	"net/http"
 )
 
-func main(){
+func main() {
 
 	router := NewRouter()
 
