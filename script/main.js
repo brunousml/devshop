@@ -1,8 +1,7 @@
 $(window).load(function() {
 	$('button').click(function(){ // TODO: To better code move to template
 		addToCart($(this));
-
-	    
+		sumTotalCart();	    
   	});
 });
 
@@ -13,5 +12,10 @@ function addToCart(el){
 					"</td>" + 
 					"<td>$" + el.data("price") + "</td>"+
 					"<td><button class='btn btn-danger pull-right'>Remove</button></td></tr>" 
-	  $('#cart > tbody:last-child').append(html);
+  	
+  	$('#cart > tbody:last-child').append(html);
+}
+
+function sumTotalCart(){
+
 }
