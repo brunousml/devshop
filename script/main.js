@@ -1,36 +1,17 @@
-// var UserGist = React.createClass({
-//   getInitialState: function() {
-//     return {
-//       username: '',
-//       lastGistUrl: ''
-//     };
-//   },
+$(window).load(function() {
+	$('button').click(function(){ // TODO: To better code move to template
+		addToCart($(this));
 
-//   componentDidMount: function() {
-//     $.get(this.props.source, function(result) {
-//       var lastGist = result[0];
-//       if (this.isMounted()) {
-//         this.setState({
-//           username: lastGist.owner.login,
-//           lastGistUrl: lastGist.html_url
-//         });
-//       }
-//     }.bind(this));
-//   },
+	    
+  	});
+});
 
-//   render: function() {
-//     return ("
-//     	<div>
-// 	        {this.state.username}'s last gist is
-// 	        <a href={this.state.lastGistUrl}>here</a>.
-//       	</div>"
-//     );
-//   }
-// });
-
-
-// jQuery(document).ready(function(){
-// 	React.render(
-// 	  <div className="content">Hello React JS</div>
-// 	);	
-// });
+function addToCart(el){
+	var html = "<tr class='product'>" +
+  					"<td>" + 
+  						el.data("username") + 
+					"</td>" + 
+					"<td>$" + el.data("price") + "</td>"+
+					"<td><button class='btn btn-danger pull-right'>Remove</button></td></tr>" 
+	  $('#cart > tbody:last-child').append(html);
+}
