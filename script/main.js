@@ -1,15 +1,20 @@
 $(window).load(function() {
-	$('button').click(function(){ // TODO: To better code move to template
+	$('#devs button').click(function(){ // TODO: To better code move to template
 		addToCart($(this));
 		sumTotalCart();
 
-		$('.remove').click(function(){ // TODO: To better code move to template
+	   	$('.remove').click(function(){ // TODO: To better code move to template
 			removeFromCart($(this));
 			sumTotalCart();	    
-	  	});	    
+  		});	 
   	});
 
-  	
+  	$('#btn-payment-cart').click(function(){
+  		if($(this).data('total') > 0){
+	  		$('#cart-page').hide();
+	  		$('#success-payment').show();
+  		}
+  	})
 });
 
 function addToCart(el){
@@ -33,7 +38,9 @@ function sumTotalCart(){
 }
 
 function updateTotalCart(value){
+	var el = $('#total-cart');
 	$('#total-cart').html("$" + value);
+	$('#btn-payment-cart').data('total', String(value));
 }
 
 function removeFromCart(el){
