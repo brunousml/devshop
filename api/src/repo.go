@@ -7,11 +7,11 @@ var currentId int
 var devs Devs
 
 func init() {
-	RepoCreateDev(Dev{Username: "josh", photo: "",  Price: 100})
-	RepoCreateDev(Dev{Username: "andy", Price: 120})
-	RepoCreateDev(Dev{Username: "adrian", Price: 80})
-	RepoCreateDev(Dev{Username: "brian", Price: 50})
-	RepoCreateDev(Dev{Username: "munos", Price: 90})
+	// RepoCreateDev(Dev{Username: "josh", photo: "",  Price: 100})
+	// RepoCreateDev(Dev{Username: "andy", Price: 120})
+	// RepoCreateDev(Dev{Username: "adrian", Price: 80})
+	// RepoCreateDev(Dev{Username: "brian", Price: 50})
+	// RepoCreateDev(Dev{Username: "munos", Price: 90})
 
 }
 

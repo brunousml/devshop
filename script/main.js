@@ -3,12 +3,12 @@
 var total = 0;
 var discout = 0;
 
-function addToCart(el){
+function addToCart(dev){
 	var html = "<tr class='product'>" +
   					"<td>" + 
-  						el.data("username") + 
+  						dev.username + 
 					"</td>" + 
-					"<td class='price' data-price="+ el.data("price") +">$" + el.data("price") + "</td>"+
+					"<td class='price' data-price="+ dev.price +">$" + dev.price + "</td>"+
 					"<td><button class='btn btn-danger pull-right remove'>Remove</button></td></tr>" 
   	
   	$('#cart > tbody:last-child').append(html);
@@ -43,10 +43,20 @@ function removeFromCart(el){
 	$(el).closest('tr').remove();
 }
 
+function addToRepo(dev){    
+	$.post("http://localhost:8080/devs", JSON.stringify(dev));
+}
 
 $(window).load(function() {
+	// Add to Cart
 	$('#devs button').click(function(){ // TODO: To better code move to template
-		addToCart($(this));
+		var dev = {
+			'username' : $(this).data('username'),
+			'price' : $(this).data('price')
+		}
+
+		addToCart(dev);
+		addToRepo(dev);
 		sumTotalCart();
 
 	   	$('.remove').click(function(){ // TODO: To better code move to template
@@ -55,6 +65,7 @@ $(window).load(function() {
   		});	 
   	});
 
+	// Payment
   	$('#btn-payment-cart').click(function(){
   		if($(this).data('total') > 0){
 	  		$('#cart-page').hide();
@@ -62,9 +73,8 @@ $(window).load(function() {
   		}
   	});
 
+	// Cupom
   	$('#btn-cupom-cart').click(function(){
-
-
   		var payment = $('#btn-payment-cart');
   		var cupom = $('#cupom-cart').val();
   		var total = payment.data("total");
