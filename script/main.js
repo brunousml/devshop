@@ -26,6 +26,10 @@ function sumTotalCart(){
 		value = value - discout;
 	}
 
+	if(value < 0){
+		value = 0;
+	}
+
 	setTotalCart(value);
 }
 
